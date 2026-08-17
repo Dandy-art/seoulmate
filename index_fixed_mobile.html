@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>seoulmate.</title>
+<meta name="description" content="seoulmate. — From Seoul, Will Love U Full. Nikmati cita rasa Korea autentik dengan sentuhan modern.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F7F2E8;--navy:#0B1F3A;--red:#C92A2A;--gold:#C8A96B;--white:#FFF;--light:#e8e2d4;--ease:cubic-bezier(.4,0,.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cream);color:var(--navy);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}h1,h2,h3,h4{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.1}img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.container{max-width:1240px;margin:auto;padding:0 36px}.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:.3s;background:transparent}.navbar.scrolled{background:rgba(247,242,232,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(11,31,58,.06);padding:14px 0}.navbar .container{display:flex;align-items:center;justify-content:space-between}.logo{display:flex;flex-direction:column;line-height:1}.brand{font:700 30px "Cormorant Garamond",serif;letter-spacing:-.02em;background:linear-gradient(110deg,#0B1F3A 35%,#C8A96B 50%,#0B1F3A 65%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite}.korean{font-size:10px;letter-spacing:.3em;color:var(--gold);margin-top:3px}@keyframes shimmer{to{background-position:-200% center}}.nav-links{display:flex;gap:38px;list-style:none}.nav-links a{font-size:13px;font-weight:500;letter-spacing:.06em}.nav-right{display:flex;align-items:center;gap:18px}.cart-btn{display:flex;align-items:center;gap:9px;padding:10px 18px;background:var(--navy);color:var(--cream);border-radius:100px;font-size:13px;font-weight:500;transition:.3s}.cart-btn:hover{background:var(--red);transform:translateY(-1px)}.cart-count{background:var(--red);color:#fff;font-size:11px;font-weight:600;min-width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}.hamburger{display:none;width:28px;height:18px;position:relative}.hamburger span{position:absolute;left:0;width:100%;height:2px;background:var(--navy);transition:.3s}.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:8px}.hamburger span:nth-child(3){top:16px}.hamburger.active span:nth-child(1){transform:rotate(45deg);top:8px}.hamburger.active span:nth-child(2){opacity:0}.hamburger.active span:nth-child(3){transform:rotate(-45deg);top:8px}
+
+.hero{padding:150px 0 110px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(200,169,107,.12),transparent 70%);border-radius:50%}.hero .container{display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}.hero-text .korean-small{font-size:12px;letter-spacing:.4em;color:var(--red);margin-bottom:24px;display:inline-block}.hero-text h1{font-size:clamp(60px,11vw,150px);margin-bottom:32px;line-height:.95}.italic{font-style:italic;color:var(--red);font-weight:500}.hero-text p{font:600 italic clamp(26px,3.5vw,40px) "Cormorant Garamond",serif;max-width:600px;margin-bottom:50px;line-height:1.3}.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}.btn{padding:16px 32px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border-radius:4px;display:inline-flex;align-items:center;justify-content:center}.btn-primary{background:var(--navy);color:var(--cream)}.btn-secondary{border:1px solid var(--navy)}.btn-primary:hover,.btn-secondary:hover{background:var(--red);color:#fff;transform:translateY(-2px)}
+.hero-images{position:relative;height:580px}.hero-img{position:absolute;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(11,31,58,.14);background:var(--light)}.hero-img img{width:100%;height:100%;object-fit:cover}.hero-img-1{width:72%;height:72%;top:0;right:0}.hero-img-2{width:56%;height:56%;bottom:10px;left:0;border:7px solid var(--cream)}.hero-badge{position:absolute;top:30px;left:-18px;background:var(--cream);padding:11px 18px;border-radius:100px;box-shadow:0 10px 30px rgba(11,31,58,.08);z-index:3;font-size:11px;font-weight:600}.dot{display:inline-block;width:8px;height:8px;background:var(--red);border-radius:50%;margin-right:10px;animation:pulse 2s infinite}@keyframes pulse{50%{opacity:.4;transform:scale(.85)}}
+.marquee{background:var(--navy);color:var(--cream);padding:18px 0;overflow:hidden;white-space:nowrap}.marquee-track{display:inline-block;animation:marquee 25s linear infinite}.marquee span{font:italic 22px "Cormorant Garamond",serif;margin:0 25px}.marquee span:after{content:"✦";color:var(--red);margin-left:25px}@keyframes marquee{to{transform:translateX(-50%)}}
+.section{padding:100px 0;position:relative;overflow:hidden}.section-header{text-align:center;max-width:640px;margin:0 auto 70px}.section-eyebrow{font-size:11px;letter-spacing:.35em;color:var(--red);font-weight:600;text-transform:uppercase;margin-bottom:18px;display:inline-block;padding:6px 16px;background:rgba(201,42,42,.08);border-radius:100px}.section-header h2{font-size:clamp(36px,5vw,56px);margin-bottom:18px}.section-header p{font-size:16px;opacity:.7}.korean-stamp{position:absolute;top:-20px;right:-10px;width:60px;height:60px;border:2px solid var(--red);color:var(--red);font:700 24px "Cormorant Garamond",serif;display:flex;align-items:center;justify-content:center;border-radius:8px;transform:rotate(-10deg)}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}.product-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(11,31,58,.06);display:flex;flex-direction:column;transition:.3s}.product-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(11,31,58,.14)}.product-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--light)}.product-img img{width:100%;height:100%;object-fit:cover}.product-badge{position:absolute;top:18px;left:18px;background:var(--red);color:#fff;padding:6px 14px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;z-index:2}.product-badge.gold{background:var(--gold);color:var(--navy)}.product-info{padding:30px;display:flex;flex-direction:column;flex-grow:1}.product-name-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.product-name{font-size:28px}.product-korean{font-size:14px;color:var(--gold)}.product-desc{font-size:14px;opacity:.68;margin:8px 0 22px;line-height:1.6;flex-grow:1}.product-price{font:600 26px "Cormorant Garamond",serif}.nutrition-preview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:16px 0;border-top:1px solid var(--light);border-bottom:1px solid var(--light);margin-bottom:22px}.nutrition-preview>div{font-size:10px;opacity:.6;text-transform:uppercase}.nutrition-preview strong{display:block;font:600 14px "Cormorant Garamond",serif;opacity:1;text-transform:none}.product-actions{display:flex;gap:10px}.btn-add{flex:1;background:var(--navy);color:var(--cream);padding:14px;border-radius:8px;font-size:12px;font-weight:600;text-transform:uppercase}.btn-add:hover{background:var(--red)}.btn-info{border:1px solid var(--navy);padding:14px 20px;border-radius:8px;font-size:12px;text-transform:uppercase}.btn-info:hover{background:var(--navy);color:var(--cream)}.combo-card{grid-column:1/-1;flex-direction:row}.combo-card.reverse{flex-direction:row-reverse}.combo-img{width:45%;aspect-ratio:1/1}.combo-info{width:55%;padding:40px;justify-content:center}.combo-tag{display:inline-block;background:var(--gold);color:var(--navy);padding:4px 10px;border-radius:4px;font-size:10px;font-weight:700;text-transform:uppercase;margin-bottom:12px;width:max-content}
+.about{background:#fff}.about .container{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}.about-image{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--light)}.about-image img{width:100%;height:100%;object-fit:cover}.about-text h2{font-size:clamp(36px,5vw,56px);margin-bottom:24px}.about-text p{font-size:16px;opacity:.75;line-height:1.8;margin-bottom:14px}.about-stats{display:flex;gap:40px;margin-top:36px;padding-top:32px;border-top:1px solid var(--light)}.about-stat .num{font:600 38px "Cormorant Garamond",serif;color:var(--red)}.about-stat .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-top:8px}.why-grid,.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.why-card,.testi-card{background:#fff;padding:40px 30px;border-radius:18px;text-align:center;box-shadow:0 2px 12px rgba(11,31,58,.06)}.why-icon{width:58px;height:58px;background:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 22px;color:var(--red)}.why-card h4{font:700 18px Inter,sans-serif;margin-bottom:10px;letter-spacing:.1em}.why-card p,.testi-card p{font-size:14px;opacity:.7}.testi-card{text-align:left;padding:32px}.stars{color:var(--gold);font-size:18px;margin-bottom:16px}.testi-card p{font-size:15px;line-height:1.7;margin-bottom:24px;font-style:italic}.testi-author{display:flex;align-items:center;gap:12px}.author-avatar{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:700}.author-name{font-size:14px;font-weight:600}.author-role{font-size:12px;opacity:.6}
+.cta{background:var(--navy);color:var(--cream;padding:130px 0;text-align:center}.cta-content{max-width:640px;margin:auto;padding:0 36px}.cta-content .korean-small{color:var(--gold);letter-spacing:.4em;font-size:12px}.cta h2{font-size:clamp(36px,5vw,58px);margin:20px 0 18px}.cta h2 .italic{color:var(--gold)}.cta p{opacity:.72;margin-bottom:38px}.cta-button{background:var(--red);color:#fff;padding:18px 42px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;gap:12px}.cta-button:hover{background:var(--cream);color:var(--navy)}
+.footer{background:var(--navy);color:var(--cream);padding:80px 0 30px}.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(247,242,232,.1)}.footer-brand p{margin-top:18px;font-size:14px;opacity:.6;max-width:280px}.footer-col h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}.footer-col ul{list-style:none}.footer-col li{margin-bottom:11px}.footer-col a{font-size:14px;opacity:.72}.footer-bottom{padding-top:30px;display:flex;justify-content:space-between;font-size:13px;opacity:.5}
+.modal-overlay,.cart-overlay{position:fixed;inset:0;background:rgba(11,31,58,.55);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.3s;padding:20px}.modal-overlay.active,.cart-overlay.active{opacity:1;visibility:visible}.modal{background:var(--cream);border-radius:18px;max-width:540px;width:100%;padding:38px;position:relative;max-height:90vh;overflow-y:auto}.modal-close,.cart-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:#fff;font-size:20px}.modal h3{font-size:30px;padding-right:40px}.modal-korean{color:var(--gold);margin-bottom:24px}.nutrition-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.nutrition-item{background:#fff;padding:14px 16px;border-radius:8px;border-left:3px solid var(--red)}.nutrition-item .label{font-size:10px;opacity:.6;text-transform:uppercase}.nutrition-item .value{font:600 18px "Cormorant Garamond",serif;margin-top:4px}.modal-note{font-size:12px;opacity:.6;margin-top:20px;padding-top:18px;border-top:1px solid var(--light);font-style:italic}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100%;background:var(--cream);z-index:210;transform:translateX(100%);transition:.4s;display:flex;flex-direction:column}.cart-drawer.active{transform:translateX(0)}.cart-overlay{display:block;z-index:205}.cart-header{padding:24px 28px;border-bottom:1px solid var(--light);display:flex;justify-content:space-between}.cart-header .cart-close{position:static}.cart-items{flex:1;overflow-y:auto;padding:12px 28px}.cart-empty{text-align:center;padding:80px 20px;opacity:.5}.cart-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--light)}.cart-item-img{width:64px;height:64px;border-radius:10px;overflow:hidden;flex-shrink:0}.cart-item-img img{width:100%;height:100%;object-fit:cover}.cart-item-info{flex:1}.cart-item-name{font-size:15px;font-weight:600}.cart-item-price{font:600 15px "Cormorant Garamond",serif;opacity:.7}.cart-item-controls{display:flex;align-items:center;gap:8px;margin-top:10px}.qty-btn{width:26px;height:26px;border-radius:6px;background:#fff;font-weight:600}.qty-display{min-width:24px;text-align:center}.cart-item-remove{margin-left:auto;color:var(--red);font-size:11px;text-transform:uppercase}.cart-footer{padding:24px 28px;border-top:1px solid var(--light);background:#fff}.cart-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px}.cart-total .amount{font:600 34px "Cormorant Garamond",serif}.btn-checkout{width:100%;background:var(--red);color:#fff;padding:16px;border-radius:8px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}.btn-checkout:disabled{background:var(--light);color:var(--navy);opacity:.5;cursor:not-allowed}
+.checkout-form{display:flex;flex-direction:column;gap:14px}.form-group{display:flex;flex-direction:column;gap:6px}.form-group label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;opacity:.7;font-weight:600}.form-group input,.form-group textarea,.form-group select{background:#fff;border:1px solid var(--light);padding:13px 14px;border-radius:8px;font:14px Inter,sans-serif;color:var(--navy);width:100%}.form-group textarea{resize:vertical;min-height:72px}.voucher-row{display:flex;gap:10px}.voucher-row input{flex:1}.voucher-btn{padding:10px 20px;background:var(--navy);color:var(--cream);border-radius:8px;font-size:12px;font-weight:600}.voucher-msg{font-size:12px;min-height:14px}.voucher-info-note{font-size:11px;color:#666;font-style:italic}.order-summary{background:#fff;border-radius:10px;padding:18px}.order-summary h4{font:600 11px Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}.summary-item,.summary-discount,.summary-total{display:flex;justify-content:space-between;padding:4px 0;font-size:14px}.summary-discount{color:var(--red)}.summary-total{margin-top:12px;padding-top:12px;border-top:1px solid var(--light);font-weight:600}.summary-total .amount{font:600 24px "Cormorant Garamond",serif}.success-modal{text-align:center;max-width:420px}.success-icon{width:68px;height:68px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 22px}.success-modal p{opacity:.72;margin:10px 0 26px}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s ease,transform .9s ease}.reveal.is-visible{opacity:1;transform:none}
+@media(max-width:768px){.container{padding:0 20px}.nav-links{position:fixed;top:0;right:-100%;width:80%;max-width:320px;height:100vh;background:var(--cream);flex-direction:column;justify-content:center;gap:32px;padding:40px;transition:right .4s;box-shadow:-10px 0 40px rgba(11,31,58,.15)}.nav-links.active{right:0}.nav-links a{font:500 22px "Cormorant Garamond",serif}.hamburger{display:block;z-index:101}.cart-btn{padding:9px 14px}.cart-btn span:nth-child(2){display:none}.hero{padding:130px 0 70px}.hero .container{grid-template-columns:1fr;gap:50px}.hero-images{height:420px}.hero-img-1{width:75%}.hero-img-2{width:58%}.section{padding:70px 0}.section-header{margin-bottom:40px}.menu-grid{grid-template-columns:1fr}.combo-card,.combo-card.reverse{flex-direction:column}.combo-img,.combo-info{width:100%}.combo-img{aspect-ratio:4/3}.combo-info{padding:30px}.about .container{grid-template-columns:1fr;gap:40px}.about-image{aspect-ratio:4/3}.why-grid,.testi-grid{grid-template-columns:1fr}.footer{padding:60px 0 30px}.footer-top{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.cart-drawer{width:100%}.modal{padding:28px 22px}.nutrition-list{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}.hero-buttons{flex-direction:column}.hero-buttons .btn{width:100%}.product-info{padding:24px}.nutrition-preview{grid-template-columns:repeat(2,1fr)}.nutrition-list{grid-template-columns:1fr}}
+</style>
+
+<style id="mobile-responsive-fix">
+/* Responsive safety fixes */
+html { width: 100%; max-width: 100%; overflow-x: hidden; }
+body { width: 100%; max-width: 100%; margin: 0; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+
+img, video, svg, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.container, .wrapper, .content, main, section {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  html, body { min-width: 0; }
+
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Prevent common desktop fixed widths from breaking mobile */
+  [style*="width: 100vw"] { width: 100% !important; }
+  [style*="min-width"] { min-width: 0 !important; }
+
+  .container, .wrapper, .content, main, section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Flexible grids */
+  .grid, .menu-grid, .products, .product-grid, .cards, .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100%;
+  }
+
+  /* Flexible flex layouts */
+  .row, .flex-row {
+    flex-wrap: wrap;
+  }
+
+  /* Keep cards from becoming squashed */
+  .card, .menu-card, .product-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Media inside cards */
+  .card img, .menu-card img, .product-card img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Large desktop typography */
+  h1 {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+    line-height: 1.05;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 7vw, 2.5rem);
+    line-height: 1.1;
+  }
+  h3 {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+  }
+
+  /* Buttons */
+  button, a {
+    max-width: 100%;
+  }
+
+  /* Tables don't stretch the page */
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid, .menu-grid, .products, .product-grid, .cards, .card-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .container, .wrapper, .content, main, section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+/* Handle elements that were explicitly sized for desktop */
+@media (max-width: 768px) {
+  [style*="width:"] {
+    max-width: 100% !important;
+  }
+
+  [style*="height:"] {
+    max-height: none;
+  }
+}
+</style>
+
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="container">
+<a href="#home" class="logo"><span class="brand">seoulmate.</span><span class="korean">서울메이트</span></a>
+<ul class="nav-links" id="navLinks"><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About</a></li><li><a href="#order">Order</a></li></ul>
+<div class="nav-right"><button class="cart-btn" id="cartBtn">🛒 <span>Cart</span> <span class="cart-count" id="cartCount">0</span></button><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div></div>
+</div></nav>
+
+<section class="hero" id="home"><div class="container">
+<div class="hero-text"><span class="korean-small">맛있는 한국</span><h1>Authentic<br><span class="italic">Korean Taste</span></h1><p>“From Seoul, Will Love U Full.”</p><div class="hero-buttons"><a href="#menu" class="btn btn-primary">Pesan Sekarang</a><a href="#menu" class="btn btn-secondary">Lihat Menu</a></div></div>
+<div class="hero-images"><div class="hero-badge"><span class="dot"></span>Freshly Made</div><div class="hero-img hero-img-1"><img src="https://z-cdn-media.chatglm.cn/files/5ea52b24-bb4c-4833-bb0c-f373e8f2538e.jpeg?auth_key=1886841577-92878f01e4b24f0a9e5f26cd9f3d5580-0-60719961a4ff68309395dafe9b774585" alt="Dakkochi"></div><div class="hero-img hero-img-2"><img src="https://image.idntimes.com/post/20230618/milk-tea-2-59f506aa441e3192bb4237a4e87b2a36-95e409b33e99a3d42b61359be63a539a.jpg?tr=w-1200,f-webp,q-75&width=1200&format=webp&quality=75" alt="Roasted Milk Tea"></div></div>
+</div></section>
+
+<div class="marquee"><div class="marquee-track"><span>Authentic Korean Taste</span><span>Freshly Made Daily</span><span>Taste of Seoul</span><span>seoulmate. Original</span><span>Authentic Korean Taste</span><span>Freshly Made Daily</span><span>Taste of Seoul</span><span>seoulmate. Original</span></div></div>
+
+<section class="section" id="menu"><div class="container"><div class="section-header reveal"><span class="section-eyebrow">Our Menu</span><h2>Korean <span class="italic">Favorites</span></h2><p>Korean food dan minuman favorit untuk menemani harimu.</p></div><div class="menu-grid" id="menuGrid"></div></div></section>
+
+<section class="section about" id="about"><div class="container"><div class="about-image reveal"><img src="https://z-cdn-media.chatglm.cn/files/91ef1b32-cb75-431c-bdc9-8fd0a69f752f.jpeg?auth_key=1886841577-d98ce644905a4d479437dce1af352ef8-0-d11734155ef42cde8790a54bc122979c" alt="Seoul"></div><div class="about-text reveal"><span class="section-eyebrow">Our Story</span><h2>Made with <span class="italic">Korean Soul.</span></h2><p>seoulmate. menghadirkan Korean food dan minuman dengan rasa yang sederhana, modern, dan nikmat.</p><p>Setiap hidangan dibuat dengan bahan pilihan dan resep yang terinspirasi dari jalanan Seoul—disajikan dengan sentuhan modern.</p><div class="about-stats"><div class="about-stat"><div class="num">100%</div><div class="label">Authentic Recipe</div></div><div class="about-stat"><div class="num">5</div><div class="label">Signature Menu</div></div><div class="about-stat"><div class="num">11h</div><div class="label">Open Daily</div></div></div></div></div></section>
+
+<section class="section"><div class="container"><div class="section-header reveal"><span class="section-eyebrow">Why seoulmate.</span><h2>Why <span class="italic">Choose Us</span></h2></div><div class="why-grid"><div class="why-card reveal"><div class="why-icon">✦</div><h4>QUALITY</h4><p>Bahan pilihan berkualitas.</p></div><div class="why-card reveal"><div class="why-icon">◈</div><h4>AUTHENTIC</h4><p>Terinspirasi dari cita rasa Korea.</p></div><div class="why-card reveal"><div class="why-icon">❋</div><h4>MADE WITH CARE</h4><p>Dibuat dengan perhatian pada rasa dan kualitas.</p></div></div></div></section>
+
+<section class="section" style="background:#fff"><div class="container"><div class="section-header reveal"><span class="section-eyebrow">Customer Love</span><h2>What They <span class="italic">Say</span></h2></div><div class="testi-grid"><div class="testi-card reveal"><div class="stars">★★★★★</div><p>"Dakkochi-nya juara! Sausnya bener-bener autentik, dagingnya empuk, dan harganya ramah banget di kantong."</p><div class="testi-author"><div class="author-avatar">R</div><div><div class="author-name">Resbob</div><div class="author-role">Kepala Desa</div></div></div></div><div class="testi-card reveal"><div class="stars">★★★★★</div><p>"Roasted Milk Tea-nya nendang banget! Aroma karamelnya pas, nggak terlalu manis."</p><div class="testi-author"><div class="author-avatar">T</div><div><div class="author-name">Teddy</div><div class="author-role">Pejabat</div></div></div></div><div class="testi-card reveal"><div class="stars">★★★★★</div><p>"Best Trio Combo-nya hemat banget! Porsinya lumayan, rasa premium tapi harga lokal."</p><div class="testi-author"><div class="author-avatar">M</div><div><div class="author-name">Manurung</div><div class="author-role">Mahasiswa</div></div></div></div></div></div></section>
+
+<section class="cta" id="order"><div class="cta-content reveal"><span class="korean-small">지금 주문하세요</span><h2>Craving Something <span class="italic">Korean?</span></h2><p>Temukan Korean favorite-mu di seoulmate.</p><a href="#menu" class="cta-button">Order Now →</a></div></section>
+
+<footer class="footer"><div class="container"><div class="footer-top"><div class="footer-brand"><a href="#home" class="logo"><span class="brand">seoulmate.</span><span class="korean">서울메이트</span></a><p>“From Seoul, Will Love U Full.”</p></div><div class="footer-col"><h5>Links</h5><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About</a></li><li><a href="#order">Order</a></li></ul></div><div class="footer-col"><h5>Social</h5><ul><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li><li><a href="#">WhatsApp</a></li></ul></div><div class="footer-col"><h5>Hours</h5><div>Hanya tersedia pada<strong style="display:block;font:600 18px 'Cormorant Garamond',serif;margin-top:4px">SHINEFEST 271</strong></div></div></div><div class="footer-bottom"><p>© 2026 seoulmate. All rights reserved.</p><p>Crafted with passion by Onederland271.</p></div></div></footer>
+
+<div class="modal-overlay" id="nutritionModal"><div class="modal"><button class="modal-close" id="nutritionClose">×</button><h3 id="nutritionName"></h3><div class="modal-korean" id="nutritionKorean"></div><div class="nutrition-list" id="nutritionList"></div><p class="modal-note">Nilai gizi merupakan estimasi dan dapat berbeda berdasarkan resep, bahan, dan ukuran porsi.</p></div></div>
+<div class="cart-overlay" id="cartOverlay"></div><aside class="cart-drawer" id="cartDrawer"><div class="cart-header"><div><h3>Your Cart</h3><span class="korean">장바구니</span></div><button class="cart-close" id="cartClose">×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-total"><span>Total</span><span class="amount" id="cartTotal">Rp 0</span></div><button class="btn-checkout" id="checkoutBtn" disabled>Pesan Sekarang</button></div></aside>
+
+<div class="modal-overlay" id="checkoutModal"><div class="modal"><button class="modal-close" id="checkoutClose">×</button><h3>Checkout</h3><div class="modal-korean">주문 완료</div><form class="checkout-form" id="checkoutForm"><div class="form-group"><label for="custName">Nama</label><input id="custName" required placeholder="Nama lengkap Anda"></div><div id="dynamic-checkout-fields"></div><div class="form-group"><label for="voucherCode">Voucher Diskon (opsional)</label><div class="voucher-row"><input id="voucherCode" placeholder="Kode voucher"><button type="button" id="applyVoucherBtn" class="voucher-btn">Apply</button></div><div id="voucherMessage" class="voucher-msg"></div><div class="voucher-info-note">Voucher SHINEFESTSEOULMATE berlaku untuk Roasted Milk Tea & Paket Combo.</div></div><div class="form-group"><label for="custNote">Catatan (opsional)</label><textarea id="custNote" placeholder="Permintaan khusus..."></textarea></div><div class="order-summary" id="orderSummary"></div><button type="submit" class="btn-checkout">Kirim via WhatsApp</button></form></div></div>
+<div class="modal-overlay" id="successModal"><div class="modal success-modal"><div class="success-icon">✓</div><span class="korean">주문 완료</span><h3>Pesanan Berhasil!</h3><p>Terima kasih. WhatsApp akan dibuka untuk konfirmasi pesanan.</p><button class="btn-checkout" id="successClose">Selesai</button></div></div>
+
+<script>
+"use strict";
+const products={
+dakkochi:{name:"Dakkochi",korean:"닭꼬치",price:15000,image:"https://z-cdn-media.chatglm.cn/files/5ea52b24-bb4c-4833-bb0c-f373e8f2538e.jpeg?auth_key=1886841577-92878f01e4b24f0a9e5f26cd9f3d5580-0-60719961a4ff68309395dafe9b774585",nutrition:{Kalori:"±210 kkal",Protein:"±13 g",Lemak:"±7 g",Karbohidrat:"±23 g",Gula:"±6 g",Sodium:"±450 mg"}},
+milktea:{name:"Roasted Milk Tea",korean:"로스티드 밀크티",price:13000,image:"https://image.idntimes.com/post/20230618/milk-tea-2-59f506aa441e3192bb4237a4e87b2a36-95e409b33e99a3d42b61359be63a539a.jpg?tr=w-1200,f-webp,q-75&width=1200&format=webp&quality=75",nutrition:{Kalori:"±150 kkal",Protein:"±2 g",Lemak:"±3 g",Karbohidrat:"±28 g",Gula:"±18 g",Sodium:"±60 mg"}},
+dakkochinasin:{name:"Dakkochi + Nasi",korean:"닭꼬치 + 밥",price:18000,image:"https://z-cdn-media.chatglm.cn/files/0375efe2-0959-4ef0-8cfe-2061ac2fbc4b.jpeg?auth_key=1886943482-6e71a9cbcbb14b7da71b0bd2be9a13a0-0-5ce0add9a9a51c95f9c5488f09f9dca7",nutrition:{Kalori:"±380 kkal",Protein:"±15 g",Lemak:"±8 g",Karbohidrat:"±53 g",Gula:"±6 g",Sodium:"±480 mg"}},
+duocombo:{name:"Best Duo Combo",korean:"베스트 듀오",price:28000,image:"https://z-cdn-media.chatglm.cn/files/3a17a95c-2970-425b-9934-2a9a691f4811.png?auth_key=1886816878-367c79d91bb24be19168e32d6ee6c535-0-356686a52e527cb90f7243b4b4774783",nutrition:{Kalori:"±360 kkal",Protein:"±15 g",Lemak:"±10 g",Karbohidrat:"±51 g",Gula:"±24 g",Sodium:"±510 mg"}},
+triocombo:{name:"Best Trio Combo",korean:"베스트 트리오",price:31000,image:"https://z-cdn-media.chatglm.cn/files/d3e439c4-01c0-42d6-a40d-d8f08ca7fd58.png?auth_key=1886948877-d654a472790e4758893b8bb6d1299d06-0-4557ecd973f70661764ced84a578ca8c",nutrition:{Kalori:"±530 kkal",Protein:"±17 g",Lemak:"±11 g",Karbohidrat:"±81 g",Gula:"±24 g",Sodium:"±540 mg"}}
+};
+let cart=[],voucherApplied=false;
+const $=id=>document.getElementById(id), rupiah=n=>"Rp "+n.toLocaleString("id-ID");
+function save(){try{localStorage.setItem("seoulmate_cart",JSON.stringify(cart))}catch(e){}}
+function load(){try{cart=JSON.parse(localStorage.getItem("seoulmate_cart")||"[]").filter(x=>products[x.id]&&x.qty>0)}catch(e){cart=[]}renderCart()}
+function add(id){const x=cart.find(i=>i.id===id);x?x.qty++:cart.push({id,qty:1});save();renderCart()}
+function qty(id,d){const x=cart.find(i=>i.id===id);if(!x)return;x.qty+=d;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);save();renderCart()}
+function total(){return cart.reduce((s,i)=>s+products[i.id].price*i.qty,0)}
+function renderCart(){$("cartCount").textContent=cart.reduce((s,i)=>s+i.qty,0);$("cartTotal").textContent=rupiah(total());$("checkoutBtn").disabled=!cart.length;$("cartItems").innerHTML=cart.length?cart.map(i=>{const p=products[i.id];return `<div class="cart-item"><div class="cart-item-img"><img src="${p.image}" alt="${p.name}"></div><div class="cart-item-info"><div class="cart-item-name">${p.name}</div><div class="cart-item-price">${rupiah(p.price*i.qty)}</div><div class="cart-item-controls"><button class="qty-btn" data-a="minus" data-id="${i.id}">−</button><span class="qty-display">${i.qty}</span><button class="qty-btn" data-a="plus" data-id="${i.id}">+</button><button class="cart-item-remove" data-a="remove" data-id="${i.id}">Hapus</button></div></div></div>`}).join(""):`<div class="cart-empty">🛒<p>Your cart is empty</p></div>`}
+function renderMenu(){const items=[["dakkochi","Best Seller"],["milktea","Voucher Available"],["dakkochinasin","Menu Favorit"],["duocombo","Voucher Available"],["triocombo","Voucher Available"]];$("menuGrid").innerHTML=items.map(([id,badge],n)=>{const p=products[id];return `<article class="product-card ${n>1?"combo-card":""} reveal"><div class="product-img ${n>1?"combo-img":""}"><span class="product-badge ${badge.includes("Voucher")?"gold":""}">${badge}</span><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="product-info ${n>1?"combo-info":""}">${n>1?'<span class="combo-tag">Paket Favorit</span>':""}<div class="product-name-row"><h3 class="product-name">${p.name}</h3><span class="product-korean">${p.korean}</span></div><p class="product-desc">${id==="dakkochi"?"Sate ayam khas Korea dengan saus manis, pedas, dan gurih.":id==="milktea"?"Teh susu roasted caramel yang lembut dan harum.":id==="dakkochinasin"?"Sate ayam khas Korea disajikan hangat dengan nasi putih pulen.":id==="duocombo"?"Paket dakkochi dan roasted milk tea tanpa nasi.":"Paket lengkap dakkochi, nasi hangat, dan roasted milk tea."}</p><div class="product-price">${rupiah(p.price)}</div><div class="nutrition-preview"><div>Kalori<strong>${p.nutrition.Kalori}</strong></div><div>Protein<strong>${p.nutrition.Protein}</strong></div><div>Lemak<strong>${p.nutrition.Lemak}</strong></div><div>Karbo<strong>${p.nutrition.Karbohidrat}</strong></div></div><div class="product-actions"><button class="btn-add" data-add="${id}">+ Tambah</button><button class="btn-info" data-info="${id}">Gizi</button></div></div></article>`}).join("")}
+function open(id){const p=products[id];$("nutritionName").textContent=p.name;$("nutritionKorean").textContent=p.korean;$("nutritionList").innerHTML=Object.entries(p.nutrition).map(([k,v])=>`<div class="nutrition-item"><div class="label">${k}</div><div class="value">${v}</div></div>`).join("");$("nutritionModal").classList.add("active");document.body.style.overflow="hidden"}
+function close(id){$(id).classList.remove("active");document.body.style.overflow=""}
+function checkoutFields(){let spice=cart.some(i=>["dakkochi","dakkochinasin","duocombo","triocombo"].includes(i.id)),sweet=cart.some(i=>["milktea","duocombo","triocombo"].includes(i.id));$("dynamic-checkout-fields").innerHTML=(spice?`<div class="form-group"><label>Varian Rasa</label><select id="custSpice" required><option value="">Pilih</option><option>Pedas Manis</option><option>Manis</option><option>Extra Pedas</option></select></div>`:"")+(sweet?`<div class="form-group"><label>Tingkat Kemanisan</label><select id="custSweet" required><option value="">Pilih</option><option>Normal Sugar</option><option>Less Sugar</option><option>Extra Sugar</option><option>No Sugar</option></select></div>`:"")}
+function discount(){if(!voucherApplied)return 0;return cart.reduce((s,i)=>s+(i.id==="milktea"?5000:i.id==="duocombo"?5000:i.id==="triocombo"?6000:0)*i.qty,0)}
+function summary(){$("orderSummary").innerHTML="<h4>Ringkasan Pesanan</h4>"+cart.map(i=>`<div class="summary-item"><span>${products[i.id].name} × ${i.qty}</span><span>${rupiah(products[i.id].price*i.qty)}</span></div>`).join("")+(discount()?`<div class="summary-discount"><span>Diskon Voucher</span><span>- ${rupiah(discount())}</span></div>`:"")+`<div class="summary-total"><span>Total Bayar</span><span class="amount">${rupiah(total()-discount())}</span></div>`}
+document.addEventListener("DOMContentLoaded",()=>{renderMenu();load();$("navbar").classList.toggle("scrolled",scrollY>30);addEvents();const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-visible");io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll(".reveal").forEach(x=>io.observe(x))});
+function addEvents(){
+window.addEventListener("scroll",()=>$("navbar").classList.toggle("scrolled",scrollY>30),{passive:true});
+$("hamburger").onclick=()=>{$("hamburger").classList.toggle("active");$("navLinks").classList.toggle("active")};
+$("navLinks").onclick=e=>{if(e.target.tagName==="A"){$("hamburger").classList.remove("active");$("navLinks").classList.remove("active")}};
+$("menuGrid").onclick=e=>{const a=e.target.closest("[data-add]"),i=e.target.closest("[data-info]");if(a)add(a.dataset.add);if(i)open(i.dataset.info)};
+$("cartBtn").onclick=()=>{$("cartDrawer").classList.add("active");$("cartOverlay").classList.add("active");document.body.style.overflow="hidden"};
+$("cartClose").onclick=$("cartOverlay").onclick=()=>closeCart();
+$("cartItems").onclick=e=>{const b=e.target.closest("[data-a]");if(!b)return;const d=b.dataset.a,id=b.dataset.id;if(d==="plus")qty(id,1);else if(d==="minus")qty(id,-1);else{cart=cart.filter(i=>i.id!==id);save();renderCart()}};
+$("nutritionClose").onclick=()=>close("nutritionModal");$("nutritionModal").onclick=e=>{if(e.target===$("nutritionModal"))close("nutritionModal")};
+$("checkoutBtn").onclick=()=>{if(!cart.length)return;checkoutFields();summary();voucherApplied=false;$("voucherCode").value="";$("voucherMessage").textContent="";closeCart();$("checkoutModal").classList.add("active");document.body.style.overflow="hidden"};
+$("checkoutClose").onclick=()=>close("checkoutModal");$("checkoutModal").onclick=e=>{if(e.target===$("checkoutModal"))close("checkoutModal")};
+$("applyVoucherBtn").onclick=()=>{const c=$("voucherCode").value.trim().toUpperCase();voucherApplied=c==="SHINEFESTSEOULMATE";$("voucherMessage").textContent=voucherApplied?"Voucher berhasil diterapkan!":"Kode voucher tidak valid.";summary()};
+$("checkoutForm").onsubmit=e=>{e.preventDefault();const h=new Date().getHours();let num="",admin="";if(h>=14&&h<18){num="6285782905734";admin="Ihsan"}else if(h>=18&&h<=22){num="6281231627655";admin="Hazel"}else{alert("Pemesanan WhatsApp tersedia pukul 14:00–17:00 dan 18:00–22:00.");return}let text=`*PESANAN BARU SEOULMATE*\\n\\n*Admin:* ${admin}\\n*Nama:* ${$("custName").value}\\n`;const s=$("custSpice"),w=$("custSweet");if(s)text+=`*Varian Rasa:* ${s.value}\\n`;if(w)text+=`*Kemanisan:* ${w.value}\\n`;text+=`*Catatan:* ${$("custNote").value||"Tidak ada"}\\n*Voucher:* ${voucherApplied?"SHINEFESTSEOULMATE":"Tidak digunakan"}\\n\\n*Detail Pesanan:*\\n`;cart.forEach(i=>text+=`• ${products[i.id].name} × ${i.qty} = ${rupiah(products[i.id].price*i.qty)}\\n`);text+=`\\n*Total Bayar:* ${rupiah(total()-discount())}\\n\\nMohon konfirmasi pesanan saya ya, terima kasih! 🙏`;window.open("https://wa.me/"+num+"?text="+encodeURIComponent(text),"_blank");close("checkoutModal");$("successModal").classList.add("active");document.body.style.overflow="hidden"};
+$("successClose").onclick=()=>{close("successModal");cart=[];save();renderCart();$("checkoutForm").reset()};
+}
+function closeCart(){$("cartDrawer").classList.remove("active");$("cartOverlay").classList.remove("active");document.body.style.overflow=""}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  function fixImages() {
+    document.querySelectorAll("img").forEach(function (img) {
+      img.style.maxWidth = "100%";
+      img.style.height = img.style.height || "auto";
+      img.addEventListener("error", function () {
+        img.style.visibility = "hidden";
+      }, { once: true });
+    });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", fixImages);
+  } else {
+    fixImages();
+  }
+})();
+</script>
+
+</body>
+</html>
