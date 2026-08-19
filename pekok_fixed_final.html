@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>seoulmate.</title>
+<meta name="description" content="seoulmate. — “From Seoul, Will Love U Full.” Nikmati cita rasa Korea autentik dengan sentuhan modern.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F7F2E8;
+  --navy: #0B1F3A;
+  --red: #C92A2A;
+  --gold: #C8A96B;
+  --white: #FFFFFF;
+  --black: #111111;
+  --gray: #6b6b6b;
+  --light-gray: #e8e2d4;
+  --shadow-sm: 0 2px 12px rgba(11, 31, 58, 0.06);
+  --shadow-md: 0 10px 30px rgba(11, 31, 58, 0.08);
+  --shadow-lg: 0 24px 60px rgba(11, 31, 58, 0.14);
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+::selection { background: var(--red); color: var(--cream); }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 22px 0;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+}
+.navbar.scrolled {
+  background: rgba(247, 242, 232, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(11, 31, 58, 0.06);
+  padding: 14px 0;
+}
+.navbar .container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { display: flex; flex-direction: column; line-height: 1; }
+.logo .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(110deg, #0B1F3A 35%, #C8A96B 50%, #0B1F3A 65%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer {
+  to { background-position: -200% center; }
+}
+.logo .korean {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-top: 3px;
+  font-weight: 500;
+}
+.nav-links {
+  display: flex;
+  gap: 38px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  position: relative;
+  padding: 6px 0;
+  transition: color var(--transition);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--red);
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--red); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  background: var(--navy);
+  color: var(--cream);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background var(--transition), transform var(--transition);
+}
+.cart-btn:hover { background: var(--red); transform: translateY(-1px); }
+.cart-icon { font-size: 14px; }
+.cart-count {
+  background: var(--red);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  transition: transform var(--transition);
+}
+.cart-btn:hover .cart-count { background: var(--cream); color: var(--red); }
+.cart-count.bump { animation: bump 350ms ease; }
+@keyframes bump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}
+.hamburger { display: none; width: 28px; height: 18px; position: relative; cursor: pointer; }
+.hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--navy);
+  transition: all var(--transition);
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg); top: 8px; }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg); top: 8px; }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 150px 0 110px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(200, 169, 107, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatGlow 8s ease-in-out infinite;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(201, 42, 42, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatGlow 10s ease-in-out infinite reverse;
+}
+@keyframes floatGlow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+
+.hero-watermark {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(300px, 40vw, 600px);
+  color: rgba(11, 31, 58, 0.03);
+  font-weight: 700;
+  line-height: 0.8;
+  top: 10%;
+  left: -5%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.hero .container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 36px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-text .korean-small {
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--red);
+  font-weight: 500;
+  margin-bottom: 24px;
+  display: inline-block;
+  position: relative;
+  padding-left: 40px;
+}
+.hero-text .korean-small::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 30px; height: 1px;
+  background: var(--red);
+}
+
+.hero-text h1 {
+  font-size: clamp(60px, 11vw, 150px);
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 32px;
+  letter-spacing: -0.025em;
+  position: relative;
+  line-height: 0.95;
+  text-shadow: 0 0 15px rgba(11, 31, 58, 0.3), 0 0 30px rgba(11, 31, 58, 0.1);
+}
+.hero-text h1 .italic {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--red);
+  text-shadow: 0 0 15px rgba(201, 42, 42, 0.4), 0 0 30px rgba(201, 42, 42, 0.15);
+}
+
+.hero-text p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--navy);
+  opacity: 0.85;
+  max-width: 600px;
+  margin-bottom: 50px;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn {
+  padding: 16px 32px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+}
+.btn-primary { background: var(--navy); color: var(--cream); }
+.btn-primary:hover { background: var(--red); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(201, 42, 42, 0.22); }
+.btn-secondary { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+.btn-secondary:hover { background: var(--navy); color: var(--cream); transform: translateY(-2px); }
+
+.hero-images { position: relative; height: 580px; }
+.hero-img {
+  position: absolute;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--light-gray);
+}
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease);
+}
+.hero-img:hover img { transform: scale(1.06); }
+.hero-img-1 { width: 72%; height: 72%; top: 0; right: 0; z-index: 2; animation: floatCard 6s ease-in-out infinite; }
+.hero-img-2 { width: 56%; height: 56%; bottom: 10px; left: 0; z-index: 1; border: 7px solid var(--cream); animation: floatCard 8s ease-in-out infinite reverse; }
+@keyframes floatCard {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-15px, -15px) rotate(1deg); }
+}
+.hero-badge {
+  position: absolute;
+  top: 30px;
+  left: -18px;
+  background: var(--cream);
+  padding: 11px 18px;
+  border-radius: 100px;
+  box-shadow: var(--shadow-md);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-badge .dot {
+  width: 8px; height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.hero-badge span:last-child {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-stroke {
+  position: absolute;
+  height: 6px;
+  border-radius: 4px;
+  transform: rotate(-12deg);
+  opacity: 0.7;
+  z-index: 1;
+  animation: strokeGrow 1.5s var(--ease) forwards;
+  width: 0;
+}
+.stroke-1 { top: 15%; left: -20px; background: var(--red); animation-delay: 0.8s; }
+.stroke-2 { bottom: 15%; right: -10px; background: var(--gold); animation-delay: 1s; }
+@keyframes strokeGrow {
+  to { width: 120px; }
+}
+.stroke-2 { animation-name: strokeGrow2; }
+@keyframes strokeGrow2 {
+  to { width: 80px; }
+}
+
+/* ============ MARQUEE ============ */
+.marquee {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 18px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  border-top: 1px solid rgba(200, 169, 107, 0.2);
+}
+.marquee-track {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+.marquee-track span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  margin: 0 25px;
+  opacity: 0.8;
+}
+.marquee-track span::after {
+  content: '✦';
+  color: var(--red);
+  margin-left: 25px;
+  font-style: normal;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============ SECTION COMMON ============ */
+.section { padding: 100px 0; position: relative; overflow: hidden; }
+.section .container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 36px;
+  position: relative;
+  z-index: 2;
+}
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 70px;
+  position: relative;
+}
+.section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--red);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(201, 42, 42, 0.08);
+  border-radius: 100px;
+}
+.section-header h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+.section-header h2 .italic {
+  font-style: italic;
+  color: var(--red);
+  font-weight: 500;
+}
+.section-header p {
+  font-size: 16px;
+  color: var(--navy);
+  opacity: 0.7;
+  line-height: 1.7;
+}
+
+.korean-stamp {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--red);
+  color: var(--red);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transform: rotate(-10deg);
+  opacity: 0.8;
+  background: rgba(247, 242, 232, 0.5);
+  z-index: 2;
+}
+
+.section-watermark {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(160px, 22vw, 280px);
+  color: rgba(11, 31, 58, 0.03);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  top: 5%;
+}
+.wm-right { right: -5%; }
+.wm-left { left: -5%; }
+
+/* ============ MENU ============ */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+.product-img {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--light-gray);
+}
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease);
+}
+.product-card:hover .product-img img { transform: scale(1.08); }
+.product-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 31, 58, 0.2), transparent 70%);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.product-card:hover .product-img::after {
+  opacity: 0;
+}
+.product-badge {
+  position: absolute;
+  top: 18px; left: 18px;
+  background: var(--red);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.product-badge.gold { background: var(--gold); color: var(--navy); }
+.product-info {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.product-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+/* Efek kilauan (glow) pada teks menu */
+.product-name { 
+  font-size: 28px; 
+  font-weight: 600; 
+  color: var(--navy);
+  animation: glowMenuText 3s ease-in-out infinite alternate;
+}
+@keyframes glowMenuText {
+  0% { text-shadow: 0 0 5px rgba(11, 31, 58, 0.2), 0 0 10px rgba(200, 169, 107, 0.15); }
+  100% { text-shadow: 0 0 15px rgba(11, 31, 58, 0.6), 0 0 25px rgba(200, 169, 107, 0.5); }
+}
+.product-korean { font-size: 14px; color: var(--gold); letter-spacing: 0.08em; white-space: nowrap; }
+.product-desc {
+  font-size: 14px;
+  color: var(--navy);
+  opacity: 0.68;
+  margin: 8px 0 22px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.product-price {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--navy);
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: -0.01em;
+}
+.old-price {
+  font-size: 16px;
+  color: var(--navy);
+  opacity: 0.4;
+  text-decoration: line-through;
+  font-family: 'Cormorant Garamond', serif;
+}
+.nutrition-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 16px 0;
+  border-top: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
+  margin-bottom: 22px;
+}
+.nutrition-preview > div {
+  font-size: 10px;
+  color: var(--navy);
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.nutrition-preview strong {
+  display: block;
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 600;
+  margin-top: 3px;
+  opacity: 1;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.product-actions { display: flex; gap: 10px; margin-top: auto; }
+.btn-add {
+  flex: 1;
+  background: var(--navy);
+  color: var(--cream);
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+}
+.btn-add:hover { background: var(--red); transform: scale(1.05); }
+.btn-info {
+  background: transparent;
+  color: var(--navy);
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--navy);
+  transition: all var(--transition);
+}
+.btn-info:hover { background: var(--navy); color: var(--cream); transform: scale(1.05); }
+
+.combo-card {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+.combo-card.reverse { flex-direction: row-reverse; }
+.combo-img {
+  width: 45%;
+  aspect-ratio: 1/1;
+}
+.combo-info {
+  width: 55%;
+  padding: 40px;
+  justify-content: center;
+}
+.combo-info .product-desc { max-width: 400px; }
+.combo-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+/* ============ MODAL ============ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 31, 58, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 300ms ease;
+  padding: 20px;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal {
+  background: var(--cream);
+  border-radius: 18px;
+  max-width: 480px;
+  width: 100%;
+  padding: 38px;
+  position: relative;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 350ms var(--ease);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-overlay.active .modal { transform: translateY(0) scale(1); }
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--navy);
+  transition: all var(--transition);
+  line-height: 1;
+}
+.modal-close:hover { background: var(--red); color: var(--white); transform: rotate(90deg); }
+.modal h3 { font-size: 30px; color: var(--navy); margin-bottom: 4px; padding-right: 40px; }
+.modal .modal-korean { font-size: 14px; color: var(--gold); margin-bottom: 24px; letter-spacing: 0.08em; }
+.nutrition-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.nutrition-item {
+  background: var(--white);
+  padding: 14px 16px;
+  border-radius: 8px;
+  border-left: 3px solid var(--red);
+  transition: transform var(--transition);
+}
+.nutrition-item:hover { transform: translateX(5px); }
+.nutrition-item .label { font-size: 10px; color: var(--navy); opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+.nutrition-item .value { font-size: 18px; font-weight: 600; color: var(--navy); margin-top: 4px; font-family: 'Cormorant Garamond', serif; }
+.modal-note {
+  font-size: 12px;
+  color: var(--navy);
+  opacity: 0.6;
+  line-height: 1.6;
+  padding-top: 18px;
+  border-top: 1px solid var(--light-gray);
+  font-style: italic;
+}
+
+/* ============ CART DRAWER ============ */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 31, 58, 0.5);
+  z-index: 150;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 300ms ease;
+}
+.cart-overlay.active { opacity: 1; visibility: visible; }
+.cart-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 420px;
+  max-width: 100%;
+  background: var(--cream);
+  z-index: 160;
+  transform: translateX(100%);
+  transition: transform 400ms var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+.cart-drawer.active { transform: translateX(0); }
+.cart-header {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-header h3 { font-size: 26px; color: var(--navy); }
+.cart-header .korean-mini { font-size: 11px; color: var(--gold); letter-spacing: 0.2em; display: block; margin-top: 2px; }
+.cart-close {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--navy);
+  transition: all var(--transition);
+  line-height: 1;
+}
+.cart-close:hover { background: var(--red); color: var(--white); transform: rotate(90deg); }
+.cart-items { flex: 1; overflow-y: auto; padding: 12px 28px; }
+.cart-empty { text-align: center; padding: 80px 20px; color: var(--navy); opacity: 0.5; }
+.cart-empty .icon { font-size: 44px; margin-bottom: 14px; }
+.cart-empty p { font-size: 14px; letter-spacing: 0.04em; }
+.cart-item {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--light-gray);
+  animation: slideIn 300ms ease;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.cart-item-img {
+  width: 64px; height: 64px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--light-gray);
+}
+.cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.cart-item-price {
+  font-size: 15px;
+  color: var(--navy);
+  opacity: 0.7;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+}
+.cart-item-controls { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.qty-btn {
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--navy);
+  transition: all var(--transition);
+  font-weight: 600;
+}
+.qty-btn:hover { background: var(--navy); color: var(--cream); transform: scale(1.1); }
+.qty-display { font-size: 14px; font-weight: 600; min-width: 24px; text-align: center; color: var(--navy); }
+.cart-item-remove {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--red);
+  opacity: 0.75;
+  transition: opacity var(--transition);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.cart-item-remove:hover { opacity: 1; }
+.cart-footer {
+  padding: 24px 28px;
+  border-top: 1px solid var(--light-gray);
+  background: var(--white);
+}
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+.cart-total .label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); opacity: 0.7; font-weight: 600; }
+.cart-total .amount { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 600; color: var(--navy); letter-spacing: -0.01em; }
+.btn-checkout {
+  width: 100%;
+  background: var(--red);
+  color: var(--white);
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-checkout:hover { background: var(--navy); transform: scale(1.02); }
+.btn-checkout:disabled { background: var(--light-gray); color: var(--navy); opacity: 0.4; cursor: not-allowed; }
+
+/* ============ CHECKOUT ============ */
+.checkout-modal { max-width: 540px; }
+.checkout-form { display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy); opacity: 0.7; font-weight: 600; }
+.form-group label span { text-transform: lowercase; opacity: 0.6; font-weight: 400; font-size: 10px; }
+.form-group input, .form-group textarea, .form-group select {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  padding: 13px 14px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--navy);
+  transition: border var(--transition);
+  width: 100%;
+}
+.form-group select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%230B1F3A" d="M6 8L0 0h12z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--red); }
+.form-group textarea { resize: vertical; min-height: 72px; }
+
+/* Voucher Group */
+.voucher-row { display: flex; gap: 10px; align-items: stretch; }
+.voucher-row input { flex: 1; }
+.voucher-btn {
+  width: auto;
+  padding: 10px 20px;
+  margin: 0;
+  background: var(--navy);
+  color: var(--cream);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+}
+.voucher-btn:hover { background: var(--red); transform: scale(1.05); }
+.voucher-msg { font-size: 12px; margin-top: 4px; font-weight: 500; min-height: 14px; }
+.voucher-info-note { font-size: 11px; margin-top: 6px; color: #666; font-style: italic; line-height: 1.4; }
+
+.order-summary { background: var(--white); border-radius: 10px; padding: 18px; margin-bottom: 18px; }
+.order-summary h4 { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); opacity: 0.7; margin-bottom: 12px; font-family: 'Inter', sans-serif; font-weight: 600; }
+.summary-item { display: flex; justify-content: space-between; font-size: 14px; color: var(--navy); padding: 4px 0; }
+.summary-item .name { opacity: 0.78; }
+.summary-item .price { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+.summary-discount { display: flex; justify-content: space-between; font-size: 14px; color: var(--red); padding: 4px 0; font-weight: 500; }
+.summary-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--light-gray); font-weight: 600; }
+.summary-total .label { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; }
+.summary-total .amount { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; }
+
+/* ============ SUCCESS ============ */
+.success-modal { text-align: center; max-width: 420px; }
+.success-icon {
+  width: 68px; height: 68px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  margin: 0 auto 22px;
+  animation: scaleIn 450ms var(--ease);
+  line-height: 1;
+}
+@keyframes scaleIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.success-modal h3 { font-size: 30px; margin-bottom: 10px; padding: 0; }
+.success-modal p { color: var(--navy); opacity: 0.72; margin-bottom: 26px; font-size: 15px; line-height: 1.6; }
+.success-modal .korean-mini { font-size: 12px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 18px; display: block; }
+
+/* ============ ABOUT ============ */
+.about { background: var(--white); position: relative; overflow: hidden; }
+.about::before {
+  content: '마음';
+  position: absolute;
+  bottom: -40px;
+  right: -20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 280px;
+  color: rgba(11, 31, 58, 0.03);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.about .container {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.about-image {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--light-gray);
+}
+.about-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--ease); }
+.about-image:hover img { transform: scale(1.05); }
+.about-text .section-eyebrow { margin-bottom: 18px; }
+.about-text h2 { font-size: clamp(36px, 5vw, 56px); margin-bottom: 24px; color: var(--navy); }
+.about-text h2 .italic { font-style: italic; color: var(--red); font-weight: 500; }
+.about-text p { font-size: 16px; color: var(--navy); opacity: 0.75; line-height: 1.8; margin-bottom: 14px; }
+.about-stats { display: flex; gap: 40px; margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--light-gray); }
+.about-stat .num { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 600; color: var(--red); line-height: 1; }
+.about-stat .label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); opacity: 0.7; margin-top: 8px; font-weight: 500; }
+
+/* ============ WHY ============ */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.why-card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: 18px;
+  text-align: center;
+  transition: all var(--transition);
+  border: 1px solid transparent;
+}
+.why-card:hover { transform: translateY(-8px) scale(1.03); border-color: var(--gold); box-shadow: var(--shadow-md); }
+.why-icon {
+  width: 58px; height: 58px;
+  background: var(--cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin: 0 auto 22px;
+  transition: all var(--transition);
+  color: var(--red);
+}
+.why-card:hover .why-icon { background: var(--red); color: var(--white); transform: scale(1.1) rotate(5deg); }
+.why-card h4 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; letter-spacing: 0.1em; font-family: 'Inter', sans-serif; }
+.why-card p { font-size: 14px; color: var(--navy); opacity: 0.7; line-height: 1.6; }
+
+/* ============ TESTIMONIALS ============ */
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testi-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.testi-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-md); }
+.stars { color: var(--gold); font-size: 18px; margin-bottom: 16px; letter-spacing: 2px; }
+.testi-card p { font-size: 15px; color: var(--navy); opacity: 0.8; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+}
+.author-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+.author-role { font-size: 12px; color: var(--navy); opacity: 0.6; }
+
+/* ============ CTA ============ */
+.cta {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 130px 0;
+  text-align: center;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201, 42, 42, 0.18) 0%, transparent 65%);
+  border-radius: 50%;
+  animation: floatGlow 12s ease-in-out infinite;
+}
+.cta::after {
+  content: '';
+  position: absolute;
+  bottom: -30%; left: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(200, 169, 107, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatGlow 14s ease-in-out infinite reverse;
+}
+.cta-char {
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 360px;
+  color: rgba(247, 242, 232, 0.04);
+  font-weight: 700;
+  line-height: 1;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+}
+.brush-stroke {
+  position: absolute;
+  height: 5px;
+  border-radius: 4px;
+  transform: rotate(-12deg);
+  opacity: 0.65;
+  animation: strokeGrow 1.5s var(--ease) forwards;
+  width: 0;
+}
+.brush-1 { top: 22%; left: 8%; background: var(--red); animation-delay: 1.2s; }
+.brush-2 { bottom: 28%; right: 12%; background: var(--gold); animation-delay: 1.4s; }
+.brush-3 { top: 65%; left: 15%; width: 80px; background: var(--gold); opacity: 0.4; }
+@keyframes strokeGrow {
+  to { width: 180px; }
+}
+.brush-2 { animation-name: strokeGrow2; }
+@keyframes strokeGrow2 {
+  to { width: 130px; }
+}
+
+.cta-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; padding: 0 36px; }
+.cta-content .korean-small { font-size: 12px; letter-spacing: 0.4em; color: var(--gold); font-weight: 500; margin-bottom: 20px; display: inline-block; }
+.cta-content h2 { font-size: clamp(36px, 5vw, 58px); color: var(--cream); margin-bottom: 18px; letter-spacing: -0.02em; }
+.cta-content h2 .italic { font-style: italic; color: var(--gold); font-weight: 500; }
+.cta-content p { font-size: 17px; color: var(--cream); opacity: 0.72; margin-bottom: 38px; line-height: 1.7; }
+.cta-button {
+  background: var(--red);
+  color: var(--white);
+  padding: 18px 42px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.cta-button:hover { background: var(--cream); color: var(--navy); transform: translateY(-2px) scale(1.05); box-shadow: 0 14px 30px rgba(247, 242, 232, 0.2); }
+.cta-button .arrow { transition: transform var(--transition); }
+.cta-button:hover .arrow { transform: translateX(4px); }
+
+/* ============ FOOTER ============ */
+.footer { background: var(--navy); color: var(--cream); padding: 80px 0 30px; }
+.footer .container { max-width: 1240px; margin: 0 auto; padding: 0 36px; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(247, 242, 232, 0.1); }
+.footer-brand .logo .brand { 
+  color: var(--cream);
+  background: linear-gradient(110deg, #F7F2E8 35%, #C8A96B 50%, #F7F2E8 65%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+.footer-brand p { margin-top: 18px; font-size: 14px; color: var(--cream); opacity: 0.6; max-width: 280px; line-height: 1.7; }
+.footer-col h5 { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 600; font-family: 'Inter', sans-serif; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 11px; }
+.footer-col a { font-size: 14px; color: var(--cream); opacity: 0.72; transition: all var(--transition); }
+.footer-col a:hover { color: var(--red); opacity: 1; padding-left: 4px; }
+.footer-hours { font-size: 14px; color: var(--cream); opacity: 0.72; line-height: 1.7; }
+.footer-hours strong { display: block; color: var(--cream); opacity: 1; font-weight: 600; margin-top: 4px; font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+.footer-bottom { padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--cream); opacity: 0.5; flex-wrap: wrap; gap: 12px; }
+
+/* ============ ANIMATIONS (ELEGANT SCROLL REVEAL) ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(8px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease), filter 1s var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+.reveal-left { transform: translateX(-50px); }
+.reveal-right { transform: translateX(50px); }
+.reveal-left.is-visible, .reveal-right.is-visible { transform: translateX(0); }
+
+.hero-fade { opacity: 0; transform: translateY(20px); animation: heroFade 800ms var(--ease) forwards; }
+.hero-fade.d1 { animation-delay: 100ms; }
+.hero-fade.d2 { animation-delay: 250ms; }
+.hero-fade.d3 { animation-delay: 400ms; }
+.hero-fade.d4 { animation-delay: 550ms; }
+.hero-fade.d5 { animation-delay: 700ms; }
+@keyframes heroFade { to { opacity: 1; transform: translateY(0); } }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--cream);
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    padding: 40px;
+    transition: right 400ms var(--ease);
+    box-shadow: -10px 0 40px rgba(11, 31, 58, 0.15);
+    z-index: 99;
+  }
+  .nav-links.active { right: 0; }
+  .nav-links a { font-size: 22px; font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+  .nav-links a::after { display: none; }
+  .hamburger { display: block; z-index: 100; }
+  .navbar .container { padding: 0 20px; }
+  .cart-btn span:nth-child(2) { display: none; }
+  .cart-btn { padding: 9px 14px; }
+  
+  .hero { padding: 130px 0 70px; }
+  .hero .container { grid-template-columns: 1fr; gap: 50px; padding: 0 20px; }
+  .hero-images { height: 420px; }
+  .hero-img-1 { width: 75%; }
+  .hero-img-2 { width: 58%; }
+  .hero-badge { left: 0; top: 20px; }
+  .hero-watermark { font-size: 200px; top: 0; }
+  
+  .section { padding: 70px 0; }
+  .section .container { padding: 0 20px; }
+  .section-header { margin-bottom: 40px; }
+  .section-watermark { font-size: 120px; top: 0; }
+  .korean-stamp { width: 45px; height: 45px; font-size: 18px; top: -15px; right: 5px; }
+  
+  .menu-grid { grid-template-columns: 1fr; }
+  .nutrition-preview { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  
+  .combo-card, .combo-card.reverse { flex-direction: column; }
+  .combo-img, .combo-info { width: 100%; }
+  .combo-img { aspect-ratio: 4/3; }
+  .combo-info { padding: 30px; }
+  
+  .about .container { grid-template-columns: 1fr; gap: 40px; }
+  .about-image { aspect-ratio: 4/3; }
+  .about-stats { gap: 24px; flex-wrap: wrap; }
+  .about::before { font-size: 140px; bottom: -20px; }
+  
+  .why-grid, .testi-grid { grid-template-columns: 1fr; }
+  
+  .cta { padding: 90px 0; }
+  .cta-char { font-size: 220px; }
+  .brush-stroke { display: none; }
+  
+  .footer { padding: 60px 0 30px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .footer-brand { grid-column: 1 / -1; }
+  
+  .cart-drawer { width: 100%; }
+  .modal { padding: 28px 22px; }
+  .nutrition-list { grid-template-columns: 1fr 1fr; }
+  
+  .marquee-track span { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { width: 100%; }
+  .product-info { padding: 24px; }
+  .about-stats { gap: 18px; }
+  .about-stat .num { font-size: 30px; }
+  .nutrition-list { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#home" class="logo" aria-label="seoulmate home">
+      <span class="brand">seoulmate.</span>
+      <span class="korean">서울메이트</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#order">Order</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <span class="cart-icon">🛒</span>
+        <span>Cart</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <span class="hero-watermark">서울</span>
+  <span class="hero-stroke stroke-1"></span>
+  <span class="hero-stroke stroke-2"></span>
+  <div class="container">
+    <div class="hero-text">
+      <span class="korean-small hero-fade d1">맛있는 한국</span>
+      <h1 class="hero-fade d2">Authentic<br><span class="italic">Korean Taste</span></h1>
+      <p class="hero-fade d3">“From Seoul, Will Love U Full.”</p>
+      <div class="hero-buttons hero-fade d4">
+        <a href="#menu" class="btn btn-primary">Pesan Sekarang</a>
+        <a href="#menu" class="btn btn-secondary">Lihat Menu</a>
+      </div>
+    </div>
+    <div class="hero-images hero-fade d5">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span>Freshly Made</span>
+      </div>
+      <div class="hero-img hero-img-1">
+        <img src="https://z-cdn-media.chatglm.cn/files/f77277a1-c749-4b5b-b02c-24b5a813ae9f.png?auth_key=1887045868-a8c5cb5d9c9b45b6b48d23a2af12de20-0-44a4a4858e182e34b40f3740f17f3143" alt="Chicken Dakgangjeong" loading="eager" onerror="this.style.display='none'">
+      </div>
+      <div class="hero-img hero-img-2">
+        <img src="https://image.idntimes.com/post/20230618/milk-tea-2-59f506aa441e3192bb4237a4e87b2a36-95e409b33e99a3d42b61359be63a539a.jpg?tr=w-1200,f-webp,q-75&width=1200&format=webp&quality=75" alt="Roasted Milk Tea" loading="eager" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Authentic Korean Taste</span>
+    <span>Freshly Made Daily</span>
+    <span>Taste of Seoul</span>
+    <span>seoulmate. Original</span>
+    <span>Authentic Korean Taste</span>
+    <span>Freshly Made Daily</span>
+    <span>Taste of Seoul</span>
+    <span>seoulmate. Original</span>
+  </div>
+</div>
+
+<!-- ============ MENU ============ -->
+<section class="section" id="menu">
+  <span class="section-watermark wm-right">메뉴</span>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="korean-stamp">메뉴</span>
+      <span class="section-eyebrow">Our Menu</span>
+      <h2>Korean <span class="italic">Favorites</span></h2>
+      <p>Korean food dan minuman favorit untuk menemani harimu.</p>
+    </div>
+    <div class="menu-grid">
+      
+      <!-- Chicken Dakgangjeong -->
+      <article class="product-card reveal">
+        <div class="product-img">
+          <span class="product-badge">Best Seller</span>
+          <img src="https://z-cdn-media.chatglm.cn/files/f77277a1-c749-4b5b-b02c-24b5a813ae9f.png?auth_key=1887045868-a8c5cb5d9c9b45b6b48d23a2af12de20-0-44a4a4858e182e34b40f3740f17f3143" alt="Chicken Dakgangjeong" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="product-info">
+          <div class="product-name-row">
+            <h3 class="product-name">Chicken Dakgangjeong</h3>
+            <span class="product-korean">닭강정</span>
+          </div>
+          <p class="product-desc">Ayam goreng renyah dilapisi saus pedas, manis, dan gurih khas Korea dengan taburan wijen.</p>
+          <div class="product-price-row">
+            <span class="product-price">Rp 15.000</span>
+          </div>
+          <div class="nutrition-preview">
+            <div>Kalori<strong>±320 kkal</strong></div>
+            <div>Protein<strong>±18 g</strong></div>
+            <div>Lemak<strong>±15 g</strong></div>
+            <div>Karbo<strong>±20 g</strong></div>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add" data-product="dakgangjeong">+ Tambah</button>
+            <button class="btn-info" data-nutrition="dakgangjeong">Kandungan Gizi</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Roasted Milk Tea -->
+      <article class="product-card reveal" style="transition-delay: 0.1s;">
+        <div class="product-img">
+          <span class="product-badge gold">Most Loved</span>
+          <img src="https://image.idntimes.com/post/20230618/milk-tea-2-59f506aa441e3192bb4237a4e87b2a36-95e409b33e99a3d42b61359be63a539a.jpg?tr=w-1200,f-webp,q-75&width=1200&format=webp&quality=75" alt="Roasted Milk Tea" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="product-info">
+          <div class="product-name-row">
+            <h3 class="product-name">Roasted Milk Tea</h3>
+            <span class="product-korean">로스티드 밀크티</span>
+          </div>
+          <p class="product-desc">Teh susu panggang dengan aroma roasted caramel yang lembut.</p>
+          <div class="product-price-row">
+            <span class="product-price">Rp 10.000</span>
+          </div>
+          <div class="nutrition-preview">
+            <div>Kalori<strong>±150 kkal</strong></div>
+            <div>Protein<strong>±2 g</strong></div>
+            <div>Lemak<strong>±3 g</strong></div>
+            <div>Karbo<strong>±28 g</strong></div>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add" data-product="milktea">+ Tambah</button>
+            <button class="btn-info" data-nutrition="milktea">Kandungan Gizi</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Paket Combo (Duo) -->
+      <article class="product-card combo-card reverse reveal" style="transition-delay: 0.2s;">
+        <div class="product-img combo-img">
+          <span class="product-badge gold">Voucher Available</span>
+          <img src="https://z-cdn-media.chatglm.cn/files/c341e03a-2f62-49e6-8e4b-baa618f91d24.png?auth_key=1887045868-ace02380f72f49dd9580d404a7e6e31f-0-f6ad53d643d46d5fb2a2d7ac63081272" alt="Best Duo Combo" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="product-info combo-info">
+          <span class="combo-tag">Paket Hemat</span>
+          <div class="product-name-row">
+            <h3 class="product-name">Best Duo Combo</h3>
+            <span class="product-korean">베스트 듀오</span>
+          </div>
+          <p class="product-desc">Paket lengkap! Nikmati Chicken Dakgangjeong yang gurih dipadukan dengan susu teh roasted caramel yang lembut.</p>
+          <div class="product-price-row">
+            <span class="product-price">Rp 25.000</span>
+          </div>
+          <div class="nutrition-preview">
+            <div>Kalori<strong>±470 kkal</strong></div>
+            <div>Protein<strong>±20 g</strong></div>
+            <div>Lemak<strong>±18 g</strong></div>
+            <div>Karbo<strong>±48 g</strong></div>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add" data-product="combo">+ Tambah</button>
+            <button class="btn-info" data-nutrition="combo">Kandungan Gizi</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-image reveal reveal-left">
+      <img src="https://z-cdn-media.chatglm.cn/files/91ef1b32-cb75-431c-bdc9-8fd0a69f752f.jpeg?auth_key=1886841577-d98ce644905a4d479437dce1af352ef8-0-d11734155ef42cde8790a54bc122979c" alt="N Seoul Tower & Cherry Blossom" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="about-text reveal reveal-right">
+      <span class="section-eyebrow">Our Story</span>
+      <h2>Made with <span class="italic">Korean Soul.</span></h2>
+      <p>seoulmate. menghadirkan Korean food dan minuman dengan rasa yang sederhana, modern, dan nikmat.</p>
+      <p>Setiap hidangan dibuat dengan bahan pilihan dan resep yang terinspirasi langsung dari jalanan Seoul—disajikan dengan sentuhan modern untuk kamu nikmati setiap hari.</p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="num">100%</div>
+          <div class="label">Authentic Recipe</div>
+        </div>
+        <div class="about-stat">
+          <div class="num">2</div>
+          <div class="label">Signature Menu</div>
+        </div>
+        <div class="about-stat">
+          <div class="num">11h</div>
+          <div class="label">Open Daily</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="section">
+  <span class="section-watermark wm-left">특징</span>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="korean-stamp">진심</span>
+      <span class="section-eyebrow">Why seoulmate.</span>
+      <h2>Why <span class="italic">Choose Us</span></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">✦</div>
+        <h4>QUALITY</h4>
+        <p>Bahan pilihan berkualitas.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay: 0.15s;">
+        <div class="why-icon">◈</div>
+        <h4>AUTHENTIC</h4>
+        <p>Terinspirasi dari cita rasa Korea.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay: 0.3s;">
+        <div class="why-icon">❋</div>
+        <h4>MADE WITH CARE</h4>
+        <p>Dibuat dengan perhatian pada rasa dan kualitas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" style="background: var(--white);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="korean-stamp">리뷰</span>
+      <span class="section-eyebrow">Customer Love</span>
+      <h2>What They <span class="italic">Say</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Dakgangjeong-nya juara! Sausnya bener-bener autentik, ayamnya renyah, dan harganya ramah banget di kantong."</p>
+        <div class="testi-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Resbob</div>
+            <div class="author-role">Kepala Desa</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay: 0.15s;">
+        <div class="stars">★★★★★</div>
+        <p>"Roasted Milk Tea-nya nendang banget! Aroma karamelnya pas, nggak terlalu manis. Cocok buat temen kerja."</p>
+        <div class="testi-author">
+          <div class="author-avatar">T</div>
+          <div>
+            <div class="author-name">Teddy</div>
+            <div class="author-role">Pejabat</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay: 0.3s;">
+        <div class="stars">★★★★★</div>
+        <p>"Best Duo Combo-nya hemat banget! Porsinya lumayan, rasa premium tapi harga lokal. Pasti balik lagi!"</p>
+        <div class="testi-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Manurung</div>
+            <div class="author-role">Mahasiswa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="order">
+  <span class="cta-char">서</span>
+  <span class="brush-stroke brush-1"></span>
+  <span class="brush-stroke brush-2"></span>
+  <span class="brush-stroke brush-3"></span>
+  <div class="cta-content reveal">
+    <span class="korean-small">지금 주문하세요</span>
+    <h2>Craving Something <span class="italic">Korean?</span></h2>
+    <p>Temukan Korean favorite-mu di seoulmate.</p>
+    <a href="#menu" class="cta-button">Order Now <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <span class="brand">seoulmate.</span>
+          <span class="korean">서울메이트</span>
+        </a>
+        <p>“From Seoul, Will Love U Full.”</p>
+      </div>
+      <div class="footer-col">
+        <h5>Links</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#order">Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Social</h5>
+        <ul>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="TikTok">TikTok</a></li>
+          <li><a href="#" aria-label="WhatsApp">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Hours</h5>
+        <div class="footer-hours">
+          Hanya tersedia pada
+          <strong>SHINEFEST 271</strong>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 seoulmate. All rights reserved.</p>
+      <p>Crafted with passion by Onederland271.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ NUTRITION MODAL ============ -->
+<div class="modal-overlay" id="nutritionModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="nutritionClose" aria-label="Close">×</button>
+    <h3 id="nutritionName"></h3>
+    <div class="modal-korean" id="nutritionKorean"></div>
+    <div class="nutrition-list" id="nutritionList"></div>
+    <p class="modal-note">Nilai gizi merupakan estimasi dan dapat berbeda berdasarkan resep, bahan, dan ukuran porsi.</p>
+  </div>
+</div>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="cart-header">
+    <div>
+      <h3>Your Cart</h3>
+      <span class="korean-mini">장바구니</span>
+    </div>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="label">Total</span>
+      <span class="amount" id="cartTotal">Rp 0</span>
+    </div>
+    <button class="btn-checkout" id="checkoutBtn">Pesan Sekarang</button>
+  </div>
+</aside>
+
+<!-- ============ CHECKOUT MODAL ============ -->
+<div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true">
+  <div class="modal checkout-modal">
+    <button class="modal-close" id="checkoutClose" aria-label="Close">×</button>
+    <h3>Checkout</h3>
+    <div class="modal-korean">주문 완료</div>
+    <form class="checkout-form" id="checkoutForm">
+      <div class="form-group">
+        <label for="custName">Nama</label>
+        <input type="text" id="custName" required placeholder="Nama lengkap Anda">
+      </div>
+      
+      <!-- Dynamic Variant Fields will be injected here -->
+      <div id="dynamic-checkout-fields"></div>
+      
+      <div class="form-group">
+        <label for="voucherCode">Voucher Diskon <span>(opsional)</span></label>
+        <div class="voucher-row">
+          <input type="text" id="voucherCode" placeholder="Masukkan kode voucher">
+          <button type="button" id="applyVoucherBtn" class="voucher-btn">Apply</button>
+        </div>
+        <div id="voucherMessage" class="voucher-msg"></div>
+        <div class="voucher-info-note">* Voucher diskon tersedia untuk produk: Paket Combo.</div>
+      </div>
+      <div class="form-group">
+        <label for="custNote">Catatan Pemesan <span>(opsional)</span></label>
+        <textarea id="custNote" placeholder="Tulis catatan jika ada permintaan khusus..."></textarea>
+      </div>
+      <div class="order-summary" id="orderSummary"></div>
+      <button type="submit" class="btn-checkout">Kirim via WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ SUCCESS MODAL ============ -->
+<div class="modal-overlay" id="successModal" role="dialog" aria-modal="true">
+  <div class="modal success-modal">
+    <div class="success-icon">✓</div>
+    <span class="korean-mini">주문 완료</span>
+    <h3>Pesanan Berhasil!</h3>
+    <p>Terima kasih telah memesan di seoulmate. Anda akan diarahkan ke WhatsApp.</p>
+    <button class="btn-checkout" id="successClose">Selesai</button>
+  </div>
+</div>
+
+<script>
+// ============ PRODUCT DATA ============
+const products = {
+  dakgangjeong: {
+    name: 'Chicken Dakgangjeong',
+    korean: '닭강정',
+    price: 15000,
+    image: 'https://z-cdn-media.chatglm.cn/files/f77277a1-c749-4b5b-b02c-24b5a813ae9f.png?auth_key=1887045868-a8c5cb5d9c9b45b6b48d23a2af12de20-0-44a4a4858e182e34b40f3740f17f3143',
+    nutrition: { 'Kalori': '±320 kkal', 'Protein': '±18 g', 'Lemak': '±15 g', 'Karbohidrat': '±20 g', 'Gula': '±10 g', 'Sodium': '±520 mg' }
+  },
+  milktea: {
+    name: 'Roasted Milk Tea',
+    korean: '로스티드 밀크티',
+    price: 10000,
+    image: 'https://image.idntimes.com/post/20230618/milk-tea-2-59f506aa441e3192bb4237a4e87b2a36-95e409b33e99a3d42b61359be63a539a.jpg?tr=w-1200,f-webp,q-75&width=1200&format=webp&quality=75',
+    nutrition: { 'Kalori': '±150 kkal', 'Protein': '±2 g', 'Lemak': '±3 g', 'Karbohidrat': '±28 g', 'Gula': '±18 g', 'Sodium': '±60 mg' }
+  },
+  combo: {
+    name: 'Best Duo Combo',
+    korean: '베스트 듀오',
+    price: 25000,
+    image: 'https://z-cdn-media.chatglm.cn/files/c341e03a-2f62-49e6-8e4b-baa618f91d24.png?auth_key=1887045868-ace02380f72f49dd9580d404a7e6e31f-0-f6ad53d643d46d5fb2a2d7ac63081272',
+    nutrition: { 'Kalori': '±470 kkal', 'Protein': '±20 g', 'Lemak': '±18 g', 'Karbohidrat': '±48 g', 'Gula': '±28 g', 'Sodium': '±580 mg' }
+  }
+};
+
+// ============ CART STATE ============
+let cart = [];
+let voucherApplied = false;
+
+function loadCart() {
+  try {
+    const saved = localStorage.getItem('seoulmate_cart');
+    if (saved) cart = JSON.parse(saved);
+  } catch (e) { cart = []; }
+  updateCart();
+}
+
+function saveCart() {
+  try { localStorage.setItem('seoulmate_cart', JSON.stringify(cart)); } catch (e) {}
+}
+
+function formatRupiah(num) {
+  return 'Rp ' + num.toLocaleString('id-ID');
+}
+
+function addToCart(productId) {
+  if (!products[productId]) return;
+  const existing = cart.find(item => item.id === productId);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ id: productId, qty: 1 });
+  }
+  saveCart();
+  updateCart();
+  const count = document.getElementById('cartCount');
+  count.classList.remove('bump');
+  void count.offsetWidth;
+  count.classList.add('bump');
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
+  saveCart();
+  updateCart();
+}
+
+function changeQty(productId, delta) {
+  const item = cart.find(i => i.id === productId);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    removeFromCart(productId);
+  } else {
+    saveCart();
+    updateCart();
+  }
+}
+
+function updateCart() {
+  const countEl = document.getElementById('cartCount');
+  const itemsEl = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + (products[item.id] ? products[item.id].price * item.qty : 0), 0);
+  
+  countEl.textContent = totalItems;
+  totalEl.textContent = formatRupiah(totalPrice);
+  
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<div class="cart-empty"><div class="icon">🛒</div><p>Your cart is empty</p></div>';
+    checkoutBtn.disabled = true;
+  } else {
+    checkoutBtn.disabled = false;
+    itemsEl.innerHTML = cart.map(item => {
+      const p = products[item.id];
+      if (!p) return '';
+      return `
+        <div class="cart-item">
+          <div class="cart-item-img"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${p.name}</div>
+            <div class="cart-item-price">${formatRupiah(p.price * item.qty)}</div>
+            <div class="cart-item-controls">
+              <button class="qty-btn" data-action="decrease" data-id="${item.id}" aria-label="Decrease">−</button>
+              <span class="qty-display">${item.qty}</span>
+              <button class="qty-btn" data-action="increase" data-id="${item.id}" aria-label="Increase">+</button>
+              <button class="cart-item-remove" data-action="remove" data-id="${item.id}">Hapus</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+function openNutrition(productId) {
+  const p = products[productId];
+  if (!p) return;
+  document.getElementById('nutritionName').textContent = p.name;
+  document.getElementById('nutritionKorean').textContent = p.korean;
+  const list = document.getElementById('nutritionList');
+  list.innerHTML = Object.entries(p.nutrition).map(([key, val]) => `
+    <div class="nutrition-item">
+      <div class="label">${key}</div>
+      <div class="value">${val}</div>
+    </div>
+  `).join('');
+  document.getElementById('nutritionModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNutrition() {
+  document.getElementById('nutritionModal').classList.remove('active');
+  restoreScroll();
+}
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('active');
+  document.getElementById('cartDrawer').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('active');
+  document.getElementById('cartDrawer').classList.remove('active');
+  restoreScroll();
+}
+
+// ============ DYNAMIC CHECKOUT FIELDS ============
+function updateCheckoutFields() {
+  let hasSweet = false;
+
+  cart.forEach(item => {
+    if (item.id === 'combo' || item.id === 'milktea') {
+      hasSweet = true;
+    }
+  });
+
+  let fieldsHtml = '';
+  if (hasSweet) {
+    fieldsHtml += `
+    <div class="form-group">
+      <label for="custSweet">Tingkat Kemanisan</label>
+      <select id="custSweet" required>
+        <option value="" disabled selected>Pilih tingkat kemanisan</option>
+        <option value="Normal Sugar">Normal Sugar</option>
+      </select>
+    </div>`;
+  }
+  document.getElementById('dynamic-checkout-fields').innerHTML = fieldsHtml;
+}
+
+function openCheckout() {
+  if (cart.length === 0) return;
+  voucherApplied = false;
+  document.getElementById('voucherCode').value = '';
+  document.getElementById('voucherMessage').textContent = '';
+  
+  updateCheckoutFields(); 
+  updateCheckoutSummary();
+  
+  closeCart();
+  document.getElementById('checkoutModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('active');
+  restoreScroll();
+}
+
+function showSuccess() {
+  document.getElementById('checkoutModal').classList.remove('active');
+  document.getElementById('successModal').classList.add('active');
+}
+
+function closeSuccess() {
+  document.getElementById('successModal').classList.remove('active');
+  restoreScroll();
+  cart = [];
+  saveCart();
+  updateCart();
+  document.getElementById('checkoutForm').reset();
+  voucherApplied = false;
+}
+
+function restoreScroll() {
+  const anyOpen = 
+    document.getElementById('nutritionModal').classList.contains('active') ||
+    document.getElementById('cartDrawer').classList.contains('active') ||
+    document.getElementById('checkoutModal').classList.contains('active') ||
+    document.getElementById('successModal').classList.contains('active');
+  if (!anyOpen) {
+    document.body.style.overflow = '';
+  }
+}
+
+// ============ CALCULATE TOTAL & UPDATE SUMMARY ============
+function calculateDiscount() {
+  let discount = 0;
+  if (voucherApplied) {
+    cart.forEach(item => {
+      if (item.id === 'combo') discount += 2000 * item.qty; // 25k -> 23k
+    });
+  }
+  return discount;
+}
+
+function updateCheckoutSummary() {
+  const summary = document.getElementById('orderSummary');
+  let subtotal = cart.reduce((sum, item) => sum + (products[item.id] ? products[item.id].price * item.qty : 0), 0);
+  let discount = calculateDiscount();
+  let total = subtotal - discount;
+  
+  let html = `<h4>Ringkasan Pesanan</h4>`;
+  cart.forEach(item => {
+    const p = products[item.id];
+    if (!p) return '';
+    html += `
+      <div class="summary-item">
+        <span class="name">${p.name} × ${item.qty}</span>
+        <span class="price">${formatRupiah(p.price * item.qty)}</span>
+      </div>
+    `;
+  });
+  
+  if (discount > 0) {
+    html += `
+      <div class="summary-discount">
+        <span>Diskon Voucher</span>
+        <span>- ${formatRupiah(discount)}</span>
+      </div>
+    `;
+  }
+  
+  html += `
+    <div class="summary-total">
+      <span class="label">Total Bayar</span>
+      <span class="amount">${formatRupiah(total)}</span>
+    </div>
+  `;
+  
+  summary.innerHTML = html;
+}
+
+// ============ EVENT LISTENERS ============
+document.addEventListener('DOMContentLoaded', function() {
+  loadCart();
+  
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 30) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  }, { passive: true });
+  
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+  
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+  
+  document.querySelectorAll('.btn-add').forEach(btn => {
+    btn.addEventListener('click', function() {
+      addToCart(this.dataset.product);
+    });
+  });
+  
+  document.querySelectorAll('.btn-info').forEach(btn => {
+    btn.addEventListener('click', function() {
+      openNutrition(this.dataset.nutrition);
+    });
+  });
+  
+  document.getElementById('cartBtn').addEventListener('click', openCart);
+  document.getElementById('cartClose').addEventListener('click', closeCart);
+  document.getElementById('cartOverlay').addEventListener('click', closeCart);
+  
+  document.getElementById('cartItems').addEventListener('click', function(e) {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const productId = btn.dataset.id;
+    const action = btn.dataset.action;
+    if (action === 'increase') changeQty(productId, 1);
+    else if (action === 'decrease') changeQty(productId, -1);
+    else if (action === 'remove') removeFromCart(productId);
+  });
+  
+  document.getElementById('nutritionClose').addEventListener('click', closeNutrition);
+  document.getElementById('nutritionModal').addEventListener('click', function(e) {
+    if (e.target === this) closeNutrition();
+  });
+  
+  document.getElementById('checkoutBtn').addEventListener('click', openCheckout);
+  document.getElementById('checkoutClose').addEventListener('click', closeCheckout);
+  document.getElementById('checkoutModal').addEventListener('click', function(e) {
+    if (e.target === this) closeCheckout();
+  });
+  
+  document.getElementById('applyVoucherBtn').addEventListener('click', function() {
+    const code = document.getElementById('voucherCode').value.trim().toUpperCase();
+    const msgEl = document.getElementById('voucherMessage');
+    
+    if (code === 'SHINEFESTSEOULMATE') {
+      voucherApplied = true;
+      msgEl.style.color = 'var(--red)';
+      msgEl.textContent = 'Voucher berhasil diterapkan! Diskon berlaku untuk Paket Combo.';
+    } else if (code === '') {
+      voucherApplied = false;
+      msgEl.textContent = '';
+    } else {
+      voucherApplied = false;
+      msgEl.style.color = '#999';
+      msgEl.textContent = 'Kode voucher tidak valid atau tidak ditemukan.';
+    }
+    updateCheckoutSummary();
+  });
+  
+  document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const now = new Date();
+    const currentHour = now.getHours();
+    let waNumber = '';
+    let adminName = '';
+    
+    if (currentHour >= 14 && currentHour < 18) {
+      waNumber = '6285782905734';
+      adminName = 'Ihsan';
+    } else if (currentHour >= 18 && currentHour <= 22) {
+      waNumber = '6281231627655';
+      adminName = 'Hazel';
+    } else {
+      alert('Mohon maaf, pemesanan via WhatsApp hanya tersedia pada jam 14:00-17:00 (Admin Ihsan) dan 18:00-22:00 (Admin Hazel).');
+      return;
+    }
+    
+    const custName = document.getElementById('custName').value;
+    const sweetEl = document.getElementById('custSweet');
+    const custSweet = sweetEl ? sweetEl.value : 'Tidak ada';
+    const custNote = document.getElementById('custNote').value.trim();
+    const voucherInput = document.getElementById('voucherCode').value.trim();
+    
+    let subtotal = cart.reduce((sum, item) => sum + (products[item.id] ? products[item.id].price * item.qty : 0), 0);
+    let discount = calculateDiscount();
+    let totalBayar = subtotal - discount;
+    
+    let waText = `*PESANAN BARU SEOULMATE*\n\n`;
+    waText += `*(Admin: ${adminName})*\n`;
+    waText += `*Nama:* ${custName}\n`;
+    if (sweetEl) waText += `*Tingkat Kemanisan:* ${custSweet}\n`;
+    waText += `*Catatan Pemesan:* ${custNote ? custNote : 'Tidak ada'}\n`;
+    if (voucherApplied) {
+      waText += `*Voucher:* SHINEFESTSEOULMATE\n`;
+    } else if (voucherInput) {
+      waText += `*Voucher:* ${voucherInput} (Tidak Valid)\n`;
+    } else {
+      waText += `*Voucher:* Tidak digunakan\n`;
+    }
+    waText += `\n*Detail Pesanan:*\n`;
+    
+    cart.forEach(item => {
+      const p = products[item.id];
+      waText += `• ${p.name} × ${item.qty} = ${formatRupiah(p.price * item.qty)}\n`;
+    });
+    
+    if (discount > 0) {
+      waText += `\n*Subtotal:* ${formatRupiah(subtotal)}\n`;
+      waText += `*Diskon Voucher:* - ${formatRupiah(discount)}\n`;
+    }
+    
+    waText += `\n*Total Bayar:* ${formatRupiah(totalBayar)}\n\n`;
+    waText += `Mohon konfirmasi pesanan saya ya, terima kasih! 🙏`;
+    
+    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+    window.open(waUrl, '_blank');
+    
+    showSuccess();
+  });
+  
+  document.getElementById('successClose').addEventListener('click', closeSuccess);
+  document.getElementById('successModal').addEventListener('click', function(e) {
+    if (e.target === this) closeSuccess();
+  });
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeNutrition();
+      closeCart();
+      closeCheckout();
+      closeSuccess();
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+  });
+  
+  const revealElems = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
+    revealElems.forEach(el => {
+      observer.observe(el);
+    });
+  } else {
+    revealElems.forEach(el => el.classList.add('is-visible'));
+  }
+});
+</script>
+</body>
+</html>
